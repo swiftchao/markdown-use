@@ -1,5 +1,9 @@
 
-# **Markdown的使用**
+
+[TOC]
+
+# Markdown的使用
+
 # Examples
 # Text
 It's very easy to make some words **bold** and other words *italic* with Markdown. You can even [link to Google!](http://google.com)
@@ -14,7 +18,6 @@ Here’s an overview of Markdown syntax that you can use anywhere on GitHub.com 
 ###### This is an <h6> tag
 
 ## Emphasis
-
 
 *This text will be italic*
 _This will also be italic_
@@ -53,6 +56,7 @@ http://github.com - automatic!
 As Kanye West said:
 
 > We're living the future so
+>
 > > the present is our past.
 
 
@@ -114,11 +118,16 @@ First Header | Second Header
 ------------ | -------------
 Content from cell 1 | Content from cell 2
 Content in the first column | Content in the second column
-  
+
  First Header | Second Header
  -|-
 Content from cell 1 | Content from cell 2
 Content in the first column | Content in the second column
+
+| 左对齐 | 右对齐 | 居中对齐 |
+| :-----| ----: | :----: |
+| 单元格 | 单元格 | 单元格 |
+| 单元格 | 单元格 | 单元格 |
 
 ## SHA references
 Any reference to a commit’s [SHA-1 hash](
@@ -216,7 +225,8 @@ If you'd like to quote someone, use the > character before the line:
 如果您想引用某人，请在该行前使用>字符：
 
 >咖啡。 有史以来最好的有机悬浮液......我用它击败了博格。
->  -  Janeway队长
+>
+> -  Janeway队长
 
 # Code
 
@@ -312,4 +322,163 @@ GitHub支持Markdown中的许多附加功能，可以帮助您引用和链接到
 当您在问题的第一条评论中包含任务列表时，您会在问题列表中看到一个有用的进度条。 它也适用于Pull Requests！
 
 而且，当然是表情符号！
+
 * 预览区域`代码高亮`
+
+
+
+
+
+# 图表
+```mermaid
+gantt
+title 甘特图
+dateFormat  YYYY-MM-DD
+section 项目A
+任务1           :a1, 2018-06-06, 30d
+任务2     :after a1  , 20d
+section 项目B
+任务3      :2018-06-12  , 12d
+任务4      : 24d
+```
+
+```mermaid
+sequenceDiagram
+A->>B: 是否已收到消息？
+B-->>A: 已收到消息
+```
+
+```mermaid
+graph TD
+A[模块A] -->|A1| B(模块B)
+B --> C{判断条件C}
+C -->|条件C1| D[模块D]
+C -->|条件C2| E[模块E]
+C -->|条件C3| F[模块F]
+```
+
+
+
+## 流程图方向
+
+**流程图的定义仅由graph开始，但是方向的定义不止一种。**
+
+* TB（ top bottom）表示从上到下
+
+* BT（bottom top）表示从下到上
+* RL（right left）表示从右到左
+* LR（left right）表示从左到右
+* TD与TB一样表示从上到下
+
+
+
+```mermaid
+graph LR
+  A --> B  
+```
+
+```mermaid
+graph TB
+  A --> B
+```
+
+```mermaid
+graph BT
+  A --> B
+```
+
+
+
+```mermaid
+graph RL
+  A --> B
+```
+
+
+
+```mermaid
+graph TD
+  A --> B
+```
+
+
+
+
+
+## 节点
+
+有以下几种节点和形状：
+
+* 默认节点 A
+
+* 文本节点 B[bname]
+
+* 圆角节点 C(cname)
+
+* 圆形节点 D((dname))
+
+* 非对称节点 E>ename]
+
+* 菱形节点 F{fname}
+
+
+
+```mermaid
+graph TB
+    A
+    B(Bname)
+    C(Cname)
+    D(Dname)
+    E>Ename]
+    F{Fname}
+```
+
+## 连线
+
+**节点间的连接线有多种形状，而且可以在连接线中加入标签**
+
+* 箭头连接 A1–>B1
+* 开放连接 A2—B2
+* 标签连接 A3–text—B3 或者 A3—|text|B3
+* 箭头标签连接 A4–text –>B4 或者 A4–>|text|B4
+* 虚线开放连接 A5.-B5 或者 A5-.-B5 或者 A5..-B5
+* 虚线箭头连接 A6.->B6 或者 A6-.->B6
+* 标签虚线连接 A7-.text.-B7
+* 标签虚线箭头连接 A8-.text.->B8
+* 粗线开放连接 A9===B9
+* 粗线箭头连接 A10==>B10
+* 标签粗线开放连接 A11==text===B11
+* 标签粗线箭头连接 A12==text==>B12
+
+
+
+```mermaid
+graph TB
+    A1-->B1
+    A2---B2
+    A3---text---B3
+    A4---text2-->B4
+    A5-.-B5
+    A6-.->B6    
+```
+
+```mermaid
+graph TB
+    A7-.text.-B7
+    A8-.text.->B8
+    A9===B9
+    A10==>B10
+    A11===text===B11
+    A12===text===B12
+```
+
+```mermaid
+graph TB
+    st(开始)-->op[操作]
+    op-->co[是或不是]
+    co--no-->sub((子程序))
+    sub-->op
+    co--yes-->out>输出]
+    out-->en(结束)
+```
+
