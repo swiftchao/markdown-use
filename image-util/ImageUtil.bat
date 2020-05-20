@@ -1,0 +1,1 @@
+java -jar ImageUtil.jar %1 %2
